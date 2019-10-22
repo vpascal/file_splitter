@@ -9,6 +9,8 @@ event, file = window.Read()
 
 def reader(file):
     dt =  pd.read_excel(file)
+    dt = dt.drop(dt.tail(1).index)
+    
     columns_to_keep =['Full Name',	'PID','Mjr/Min/Cert', 'Mjr/Min/Cert Code','Dept/School','Mailing Address 1','Mailing Address City',
  'Mailing Address State', 'Mailing Address Zip','Advisor(s)']
     
@@ -18,9 +20,9 @@ def reader(file):
     phd_codes =  dt.Major_Code.str.contains('^PH|^ED')
     sports_codes = dt.Dept.str.contains('Recreation and Sport Pedagogy')
 
-    phd = dt[phd_codes]
-    sports =  dt[sports_codes]
-    rest =  dt[~phd_codes & ~sports_codes]
+    phd = dt[phd_codes].sort_values(by=['Major_Code','Name'])
+    sports =  dt[sports_codes].sort_values(by=['Major_Code','Name'])
+    rest =  dt[~phd_codes & ~sports_codes].sort_values(by=['Major_Code','Name'])
 
     with pd.ExcelWriter('Output.xlsx', engine='xlsxwriter') as writer:
         dt.to_excel(writer, sheet_name='All', index=False)
