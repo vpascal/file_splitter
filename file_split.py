@@ -32,11 +32,12 @@ def reader(file):
 
 fname = file[0]
 
-if fname:
-    try:
-        reader(fname)
-        sg.Popup("Done!\nThe file Output.xlsx is saved in the same location.",title ="Completed")
-    except KeyError:
-        sg.Popup("Error!\nColumn(s) may need to be renamed or they do not exist.\nPlease check the file structure!", title='Error')
-    except Exception:
-        sg.Popup('Unsupported file format. Only Excel files!',title="Error")
+if __name__ == '__main__':
+        if fname:
+            try:
+                reader(fname)
+                sg.Popup("Done!\nThe file Output.xlsx is saved in the same location.",title ="Completed")
+            except KeyError:
+                sg.Popup("Error!\nColumn(s) may need to be renamed or they do not exist.\nPlease check the file structure!", title='Error')
+            except Exception:
+                sg.Popup('Unsupported file format. Only Excel files!',title="Error")
