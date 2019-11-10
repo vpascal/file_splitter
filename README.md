@@ -1,3 +1,3 @@
-# file_splitter
+# File splitter
 
-Splits input file by major code and generates a finished Excel file
+Python script that splits input file by major code and generates a finished Excel file; wrapped in simple GUI
