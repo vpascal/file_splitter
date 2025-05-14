@@ -1,3 +1,6 @@
 
 *.xlsx
 .vscode/settings.json
+/build
+/dist
+file_split.spec
