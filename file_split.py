@@ -1,5 +1,5 @@
 import pandas as pd
-import PySimpleGUI as sg
+import pysimplegui as sg
 
 
 layout = [[sg.Text('Filename')],[sg.Input(), sg.FileBrowse()], [sg.OK(), sg.Cancel()]] 
